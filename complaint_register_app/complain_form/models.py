@@ -4,22 +4,19 @@ from django.db import models
 
 class Complain(models.Model):
 	complain_text = models.TextField(max_length = 200)
-	ELECTRICITY = 'EE'
-	CARPENTARY = 'CP'
-	SANITORY = 'ST'
-	OTHERS = 'OT'
 
 	COMPLAIN_TYPE = (
-		(ELECTRICITY, 'Electricity'),
-		(CARPENTARY, 'Carpentary'),
-		(SANITORY, 'Sanitory'),
-		(OTHERS, 'Others'),
+		('Electricity', 'Electricity'),
+		('Carpentary', 'Carpentary'),
+		('Sanitory', 'Sanitory'),
+		('Others', 'Others'),
 		)
 
-	complain_type = models.CharField(max_length = 2, 
-		choices = COMPLAIN_TYPE, default = ELECTRICITY)
+	complain_type = models.CharField(max_length = 50, 
+		choices = COMPLAIN_TYPE, default = 'Electricity')
 	id = models.AutoField(primary_key=True)
 	room_no = models.CharField(max_length = 5)
+	timestamp = models.DateTimeField(auto_now_add= True, auto_now= False)
 
-	def __str__(self):
-		return self.id
+	def __unicode__(self):
+		return self.room_no

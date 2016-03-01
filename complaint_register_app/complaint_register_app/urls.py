@@ -18,5 +18,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'$', 'complain_form.views.home', name='home')
+    url(r'^complain/', 'complain_form.views.complain', name="complain"),
+    url(r'^$', 'complain_form.views.home', name='home')
+
 ]
